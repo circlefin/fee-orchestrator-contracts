@@ -1,0 +1,32 @@
+[profile.default]
+src = 'src'
+out = 'out'
+libs = ["node_modules", "lib"]
+solc_version = "0.8.24"
+evm_version = 'cancun'
+test = 'test'
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+auto_detect_solc = false
+deny = "warnings"
+no_match_coverage = "test/|script/"
+build_info = true
+extra_output = ["storageLayout"]
+
+[fuzz]
+runs = 1024
+
+[invariant]
+runs = 512
+fail_on_revert = true
+depth = 15
+
+[lint]
+# Tests intentionally use vm.setEnv; production code uses high-level keccak256 for EIP-712 (clearer than asm).
+# block-timestamp: QuoteLib.validateExpiry intentionally compares block.timestamp for wall-clock TTL.
+exclude_lints = ["unsafe-cheatcode", "asm-keccak256", "block-timestamp"]
+
+[fmt]
+line_length = 120
+sort_imports = true
