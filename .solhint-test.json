@@ -1,0 +1,20 @@
+{
+  "extends": "solhint:recommended",
+  "rules": {
+    "compiler-version": ["error", "^0.8.20"],
+    "no-unused-vars": "off",
+    "no-console": "off",
+    "func-name-mixedcase": "off",
+    "no-inline-assembly": "off",
+    "gas-custom-errors": "off",
+    "reason-string": "off",
+    "func-visibility": ["error", { "ignoreConstructors": true }],
+    "one-contract-per-file": "off",
+    "import-path-check": "off",
+    "use-natspec": "off",
+    "gas-indexed-events": "off",
+    "gas-increment-by-one": "off",
+    "no-complex-fallback": "off",
+    "gas-small-strings": "off"
+  }
+}

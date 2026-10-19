@@ -1,0 +1,39 @@
+node_modules
+
+# OS
+.DS_Store
+*.orig
+
+# Build
+build
+
+# Foundry
+/cache
+/cache_forge
+/out
+.gas-snapshot
+broadcast
+
+# ABI exports (yarn abi → script/abi/extract-abis.sh); regenerable from source
+/abi
+
+# IDE
+/.idea/
+/.vscode
+/.wake
+
+# Environment
+.env*
+!/configs/.env.dev.template
+
+# Coverage report output
+report/
+lcov.info
+temp-coverage.out
+/coverage
+/coverage.json
+
+/yarn-error.log
+
+/licenses.csv
+/sbom.spdx.json

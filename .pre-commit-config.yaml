@@ -1,0 +1,18 @@
+repos:
+  - repo: local
+    hooks:
+      # Solidity
+      - id: check-copyright-solidity
+        name: Check copyright header - solidity
+        entry: ./script/pre-commit/check-copyright-header.sh
+        language: script
+        files: \.sol$
+        exclude: |
+            (?x)^(
+                .github/.*|
+                build/.*|
+                out/.*|
+                lib/.*|
+                docs/.*|
+                .*\.md$
+            )$

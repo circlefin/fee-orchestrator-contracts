@@ -1,0 +1,2 @@
+// Functions excluded from branch/function coverage checks.
+// Format: filepath#functionName or #functionName (for all files).
