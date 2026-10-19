@@ -1,0 +1,37 @@
+{
+  "name": "fee-orchestrator-contracts",
+  "version": "1.0.0",
+  "description": "Circle Fee Orchestrator smart contracts",
+  "packageManager": "yarn@1.22.22",
+  "scripts": {
+    "prepare": "if [ -n \"$CI\" ]; then exit 0; fi; command -v pre-commit >/dev/null 2>&1 || { echo 'ERROR: pre-commit is not installed. Install it (brew install pre-commit | pipx install pre-commit) and re-run yarn install.'; exit 1; }; pre-commit install",
+    "build": "forge build",
+    "abi": "bash script/abi/extract-abis.sh",
+    "lint": "solhint -w 0 -c .solhint-src.json './src/**/*.sol' && solhint -w 0 -c .solhint-test.json './test/**/*.sol' && solhint -w 0 -c .solhint-script.json './script/**/*.sol'",
+    "lint:foundry-settings": "bash script/lint/check-foundry-settings.sh",
+    "test": "forge test -vvvv",
+    "coverage": "forge coverage --no-match-coverage 'test|^script/' --no-match-test '_pinnedBytecode' > temp-coverage.out 2>&1; status=$?; cat temp-coverage.out; if [ $status -ne 0 ]; then exit $status; fi; node script/coverage/checkCoverage.js temp-coverage.out && rm temp-coverage.out",
+    "format:check": "forge fmt --check",
+    "format:write": "forge fmt",
+    "validate:upgrades": "npx @openzeppelin/upgrades-core validate out/build-info --exclude \"test/**\" --exclude \"script/**\""
+  },
+  "author": "circle",
+  "license": "Apache-2.0",
+  "repository": "git@github.com:circlefin/fee-orchestrator-contracts.git",
+  "private": true,
+  "dependencies": {
+    "@openzeppelin/contracts": "5.6.1",
+    "@openzeppelin/contracts-upgradeable": "5.6.1",
+    "solady": "^0.1.26"
+  },
+  "devDependencies": {
+    "@openzeppelin/upgrades-core": "^1.44.2",
+    "solhint": "^6.0.3"
+  },
+  "resolutions": {
+    "minimatch": "10.2.3",
+    "brace-expansion": "5.0.5",
+    "lodash": "4.18.1",
+    "solidity-ast": "0.4.61"
+  }
+}
